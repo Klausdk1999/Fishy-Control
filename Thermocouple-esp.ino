@@ -26,7 +26,7 @@ int thermoCS = 15;
 int thermoCLK = 14;
 
 #define PIN_INPUT 0
-#define RELAY_PIN 6
+#define RELAY_PIN 2
 
 #define DEFAULT_SSID "Minuano"     // Default Wifi SSID
 #define DEFAULT_KEY "kf156873"      // Default Wifi WPA2-PSK
@@ -130,7 +130,7 @@ void setup() {
   windowStartTime = millis();
 
   //initialize the variables we're linked to
-  Setpoint = 26;
+  Setpoint = 34;
 
   //tell the PID to range between 0 and the full window size
   myPID.SetOutputLimits(0, WindowSize);
@@ -170,8 +170,14 @@ void loop() {
   { //time to shift the Relay Window
     windowStartTime += WindowSize;
   }
-  if (Output < millis() - windowStartTime) digitalWrite(LED_BUILTIN, HIGH);
-  else digitalWrite(LED_BUILTIN, LOW);
+  if (Output < millis() - windowStartTime){
+    digitalWrite(RELAY_PIN, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
+  } 
+  else{ 
+    digitalWrite(RELAY_PIN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
+  }
   //if (Output < millis() - windowStartTime) digitalWrite(RELAY_PIN, HIGH);
   //else digitalWrite(RELAY_PIN, LOW);
 
@@ -180,7 +186,7 @@ void loop() {
 
   // Reconnect automatically
   if(WiFi.status() != WL_CONNECTED)
-    connectWiFi();
+  connectWiFi();
   
   server.handleClient();
 
