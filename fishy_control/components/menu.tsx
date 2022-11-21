@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Guilherme e Klaus
+            Metrologia e Instrumentação para Automação
           </Typography>
           <Button color="inherit">:D</Button>
         </Toolbar>
