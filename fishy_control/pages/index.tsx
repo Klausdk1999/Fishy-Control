@@ -3,10 +3,7 @@ import { Card } from '@mui/material';
 import { Stack } from '@mui/system';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import Menu from '../components/menu'
 
 type requestData = {
     Temperature: number,
@@ -46,6 +43,7 @@ export default function Dashboard() {
 
   return (
     <>
+    <Menu/>
     <Stack
       direction="column"
       justifyContent="center"
