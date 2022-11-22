@@ -1,45 +1,21 @@
 import * as React from 'react';
 import { Card } from '@mui/material';
 import { Stack } from '@mui/system';
-import axios from 'axios';
-import { useState,useEffect } from 'react';
 import Menu from '../components/menu'
+import useSwr from 'swr';
 
-type requestData = {
+export type requestData = {
     Temperature: number,
     Output: number
 };
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
 export default function Dashboard() {
+  const { data, error } = useSwr<requestData>('/api/data', fetcher)
 
-  const [temperature,setTemperature] = useState<number>(0);
-  const [output,setOutput] = useState<number>(0);
-
-  useEffect(() => {
-    loadData();
-    setInterval(loadData, 30000);
-    }, []);
-
-  async function loadData() {
-    try {
-        let { data, status } = await axios.get<requestData>(
-            'http://192.168.0.175/temperature',
-            {
-              headers: {
-                Accept: 'application/json',
-              },
-            },
-        );
-        setTemperature(data.Temperature);  
-       
-        setOutput(data.Output);    
-
-        console.log(status);
-
-    } catch (e) {
-        console.log(e);
-    }
-  }
+  if (error) return <div>Failed to load data</div>
+  if (!data) return <div>Loading...</div>
 
   return (
     <>
@@ -74,10 +50,10 @@ export default function Dashboard() {
       spacing={3}
       >
         <Card sx={{ fontSize: 25,textAlign: 'center', fontWeight: 700,width: 200, height:70 , p:2 , m:2}}>
-          {temperature} C
+          {data.Temperature} C
         </Card>
         <Card sx={{ fontSize: 25,textAlign: 'center', fontWeight: 700,width: 200, height:70 , p:2 , m:2}}>
-          {output}
+          {data.Output}
         </Card>
       </Stack>
     </Stack>  
