@@ -39,7 +39,7 @@ export default async function handler(
  
   if (method == "GET") {
     
-    res.status(200).json(lastReceivedState);
+    res.status(200).send(lastReceivedState);
   }
   if (method == "POST") {
     console.log(req.body)
