@@ -12,7 +12,7 @@ export type requestData = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export default function Dashboard() {
-  const { data, error } = useSwr<requestData>('/api/data', fetcher)
+  const { data, error } = useSwr<requestData>('/api/data', fetcher,{ refreshInterval: 1000 })
 
   if (error) return <div>Failed to load data</div>
   if (!data) return <CircularIndeterminate/>

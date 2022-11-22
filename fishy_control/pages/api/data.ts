@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type {requestData} from '../index';
 
-let lastReceivedState:requestData;
+let lastReceivedState:requestData = {Temperature:0 , Output:0};
 
 export default function handler(
   req: NextApiRequest,
@@ -16,8 +16,9 @@ export default function handler(
     res.status(200).json(lastReceivedState);
   }
   if (method == "POST") {
+    console.log(req.body)
     lastReceivedState = req.body;
-    res.status(200);
+    res.send(200);
   }
 }
 
