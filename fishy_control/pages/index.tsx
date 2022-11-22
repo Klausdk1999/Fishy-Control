@@ -21,16 +21,11 @@ export default function Dashboard() {
   async function getData() {
     try {
       // 👇️ const data: GetUsersResponse
-      const { data, status } = await axios.get<requestData>(
-        'https://fishy-control.vercel.app/api/data',
-        {
-          headers: {
-            Accept: 'application/json',
-          },
-        },
+      const { data, status } = await axios.get(
+        'https://fishy-control.vercel.app/api/state'
       );
   
-      console.log(JSON.stringify(data, null, 4));
+      console.log(data);
   
       // 👇️ "response status is: 200"
       console.log('response status is: ', status);
