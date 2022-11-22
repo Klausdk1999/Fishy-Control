@@ -3,7 +3,7 @@ import { Card } from '@mui/material';
 import { Stack } from '@mui/system';
 import Menu from '../components/menu'
 import useSwr from 'swr';
-
+import CircularIndeterminate from '../components/CircularIndeterminate';
 export type requestData = {
     Temperature: number,
     Output: number
@@ -15,7 +15,7 @@ export default function Dashboard() {
   const { data, error } = useSwr<requestData>('/api/data', fetcher)
 
   if (error) return <div>Failed to load data</div>
-  if (!data) return <div>Loading...</div>
+  if (!data) return <CircularIndeterminate/>
 
   return (
     <>

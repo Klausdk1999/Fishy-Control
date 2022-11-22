@@ -12,15 +12,12 @@ export default function handler(
   lastReceivedState = req.body;
  
   if (method == "GET") {
-    //teste
-    lastReceivedState={Temperature: 50, Output: 100}
+    
     res.status(200).json(lastReceivedState);
   }
   if (method == "POST") {
     lastReceivedState = req.body;
-
-
-    console.log(lastReceivedState.Temperature+" - "+lastReceivedState.Output);
+    res.status(200);
   }
 }
 
