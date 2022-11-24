@@ -9,7 +9,6 @@ export default function handler(
   res: NextApiResponse  
 ) {
   const method = req.method;
-  lastReceivedState = req.body;
  
   if (method == "GET") {
     
