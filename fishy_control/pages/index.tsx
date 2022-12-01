@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   const { data, error } = useSWR(
     "/api/data",
-    fetcher
+    fetcher,{ refreshInterval: 10000 }
   );
 
   if (error) return <div>Failed to load data</div>
