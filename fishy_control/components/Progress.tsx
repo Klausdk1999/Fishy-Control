@@ -5,11 +5,11 @@ import Box from '@mui/material/Box';
 
 const normalise = (value:number) => ((value - 0) * 100) / (5000 - 0);
 
-function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+function LinearProgressWithLabel(props: any) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress variant="determinate" value={props.value} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
@@ -21,10 +21,11 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 }
 
 export default function LinearWithValueLabel(props:any) {
-
+  let x = normalise(props.progress)
+  console.log (x)
   return (
     <Box sx={{ width: '100%' }}>
-      <LinearProgressWithLabel value={normalise(props.progress)} />
+      <LinearProgressWithLabel value={x} />
     </Box>
   );
 }

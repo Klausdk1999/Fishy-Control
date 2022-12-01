@@ -64,11 +64,16 @@ export default function Dashboard() {
       </Stack>
       <Stack
       direction="row"
-      justifyContent="center"
-      alignItems="center"
-      spacing={3}
+      spacing={3} sx={{color:'black', fontSize: 25,textAlign: 'center', fontWeight: 700, height:70 , p:2 , m:2}}
       >
-        <Progress progress={data.Output} />
+        Output Power: 
+      </Stack>
+      <Stack
+      direction="row"
+      spacing={3}
+      sx={{ width: 400, height:70}}
+      >
+        <Progress sx={{ p:2 , m:2}} progress={data.Output} />
       </Stack>
     </Stack>  
     </>
