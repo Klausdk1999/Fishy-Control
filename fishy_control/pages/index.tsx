@@ -4,6 +4,7 @@ import { Stack } from '@mui/system';
 import Menu from '../components/menu'
 import useSWR from 'swr';
 import CircularIndeterminate from '../components/CircularIndeterminate';
+import Progress from '../components/Progress'
 
 export type requestData = {
     Temperature: number,
@@ -60,6 +61,14 @@ export default function Dashboard() {
         <Card sx={{ fontSize: 25,textAlign: 'center', fontWeight: 700,width: 200, height:70 , p:2 , m:2}}>
           {data.Temperature!=0 ? <>{data.Output}</> : <><CircularIndeterminate/></>}
         </Card>
+      </Stack>
+      <Stack
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={3}
+      >
+        <Progress progress={data.Output} />
       </Stack>
     </Stack>  
     </>
