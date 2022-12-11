@@ -56,7 +56,7 @@ export default function Dashboard() {
       spacing={3}
       >
         <Card sx={{ fontSize: 25,textAlign: 'center', fontWeight: 700,width: 200, height:70 , p:2 , m:2}}>
-          {data.Temperature!=0 ? <>{data.Temperature} °C</> : <><CircularIndeterminate/></>} 
+          {data.Temperature!=0 ? <>{data.Temperature} +- 0.25 °C </> : <><CircularIndeterminate/></>} 
         </Card>
         <Card sx={{ fontSize: 25,textAlign: 'center', fontWeight: 700,width: 200, height:70 , p:2 , m:2}}>
           {data.Temperature!=0 ? <>{data.Output}</> : <><CircularIndeterminate/></>}
