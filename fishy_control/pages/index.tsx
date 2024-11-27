@@ -42,10 +42,10 @@ export default function Dashboard() {
       spacing={3}
       >
         <Card sx={{ fontSize: 20,textAlign: 'center', fontWeight: 400,width: 200, height:70 , p:2 , m:2}}>
-          Termopar tipo K
+          Temperatura
         </Card>
         <Card sx={{ fontSize: 20,textAlign: 'center', fontWeight: 400,width: 200, height:70 , p:2 , m:2}}>
-          PID Output
+          Umidade
         </Card>
       </Stack>
       

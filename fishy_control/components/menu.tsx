@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Metrologia e Instrumentação para Automação
+            Monitoramento ESP8266
           </Typography>
           <Button color="inherit">:D</Button>
         </Toolbar>
